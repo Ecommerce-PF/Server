@@ -5,18 +5,18 @@ const { Sequelize } = require("sequelize");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DEPLOY } = process.env;
 const axios = require("axios");
 
-// const sequelize = new Sequelize(
-//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-//   {
-//     logging: false, // set to console.log to see the raw SQL queries
-//     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//   }
-// );
-
-const sequelize = new Sequelize(DB_DEPLOY, {
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  });
+  }
+);
+
+// const sequelize = new Sequelize(DB_DEPLOY, {
+//     logging: false, // set to console.log to see the raw SQL queries
+//     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+//   });
 
 UserModel(sequelize);
 ClothesModel(sequelize);
@@ -30,8 +30,8 @@ const options = {
   method: "GET",
   url: "https://apidojo-forever21-v1.p.rapidapi.com/products/v2/list",
   headers: {
-    "X-RapidAPI-Key": "5cb16b518emsh43b2799f3ae9f2cp1c309ejsna6cd07c2a424",
-    "X-RapidAPI-Host": "apidojo-forever21-v1.p.rapidapi.com",
+    'X-RapidAPI-Key': 'decccd00aemsh3e01eda5ff2ad4bp142449jsn30eebb1f4658',
+    'X-RapidAPI-Host': 'apidojo-forever21-v1.p.rapidapi.com'
   },
 };
 
