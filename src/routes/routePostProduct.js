@@ -6,4 +6,3 @@ const postProduct = require("../controllers/postProduct");
 router.post("/", postProduct);
 
 module.exports = router;
-

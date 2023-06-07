@@ -4,8 +4,6 @@ const routesProducts = require("./routesProducts");
 const routesUsers = require("./routesUsers");
 const routePostProduct = require("./routePostProduct");
 
-
-
 router.use("/products", routesProducts);
 
 router.use("/users", routesUsers);
