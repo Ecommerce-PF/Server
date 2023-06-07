@@ -17,5 +17,4 @@ const postProduct = async (req, res) => {
     }
 }
 
-
 module.exports = postProduct;
