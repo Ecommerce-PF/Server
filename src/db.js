@@ -2,7 +2,7 @@ require("dotenv").config();
 const UserModel = require('./models/User');
 const ClothesModel = require('./models/Clothes');
 const { Sequelize } = require("sequelize");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DEPLOY } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, API_KEY } = process.env;
 const axios = require("axios");
 
 const sequelize = new Sequelize(
