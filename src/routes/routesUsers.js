@@ -6,13 +6,24 @@ const signUp = require("../controllers/signUp");
 const login = require("../controllers/login");
 const protected = require("../controllers/protected");
 const verifyToken = require("../middelware/verifyToken");
-const jwt = require("jsonwebtoken");
-const { JWT_SIGN } = process.env;
+const getUserById = require("../controllers/getUserById");
+
 
 router.get("/", async (req, res) => {
   try {
     const users = await getAllUsers();
     res.status(200).json(users);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await getUserById(id);
+    res.status(200).json(user);
   } catch (error) {
     res.status(400).send(error.message);
   }
