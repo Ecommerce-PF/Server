@@ -1,11 +1,12 @@
 const { Router } = require("express");
 const router = Router();
 const routesProducts = require("./routesProducts");
-
-router.get("/", (req, res) => {
-  res.send("Este va a ser el LOgin de JWT");
-});
+const routesUsers = require("./routesUsers");
+const routePostProduct = require("./routePostProduct");
 
 router.use("/products", routesProducts);
 
+router.use("/users", routesUsers);
+
+router.use("/postProduct", routePostProduct);
 module.exports = router;
