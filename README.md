@@ -33,31 +33,53 @@
 
 El servidor cuenta con las siguientes rutas:
 
-#### **📍 GET | /countries**
+#### **📍 GET | /users**
 
--  Obtiene un arreglo de objetos, donde cada objeto es un país con toda su información.
+-  Obtiene un arreglo de objetos, donde cada objeto es un usuario con toda su información.
 
-#### **📍 GET | /countries/:idPais**
+#### **📍 GET | /users/:idUser**
 
--  Esta ruta obtiene el detalle de un país específico. Es decir que devuelve un objeto con la información pedida en el detalle de un país.
--  El país es recibido por parámetro (ID de tres letras del país).
--  Tiene que incluir los datos de las actividades turísticas asociadas a este país.
+-  Esta ruta obtiene el detalle de un usuario específico. 
+-  El usuario es recibido por parámetro (ID).
+-  Ademas incluira los prooductos favoritos (wish list) del usuario.
 
-#### **📍 GET | /countries/name?="..."**
+#### **📍 POST | /users/signup**
 
--  Esta ruta debe obtener todos aquellos países que coinciden con el nombre recibido por query. (No es necesario que sea una coincidencia exacta).
--  Debe poder buscarlo independientemente de mayúsculas o minúsculas.
--  Si no existe el país, debe mostrar un mensaje adecuado.
+-  Esta ruta permite agregar un usuario a la base de datos. 
+-  Por body se debera mandar name, userName, phone, email, password, admin (false-true).
+-  Si el usuario se crea correctamente devolvera un JSON con el token asignado al usuario.
+-  Si ya existe un usuario con el mismo email retornara un error 400.
+-  Si no se indican todos los campos retornara un error 400.
 
-#### **📍 POST | /activities**
+#### **📍 POST | /users/login**
 
--  Esta ruta recibirá todos los datos necesarios para crear una actividad turística y relacionarla con los países solicitados.
--  Toda la información debe ser recibida por body.
--  Debe crear la actividad turística en la base de datos, y esta debe estar relacionada con los países indicados (al menos uno).
+-  Esta ruta permite autenticar al usuario.
+-  Por body se debera mandar userName y password.
+-  Si la autenticacion es correcta retornara un JSON con el token del usuario y el usuario.
+-  Si el userName no existe retornara un error 400 indicando que el user name es incorrecto.
+-  Validara la contrasena, si la contrasena no es valida retornara un error 400 indicando que el usuario
+   o la contrasena son incorrectos.
 
-#### **📍 GET | /activities**
+#### **📍 GET | /products/name?="..."**
 
--  Obtiene un arreglo de objetos, donde cada objeto es una actividad turística.
+-  Esta ruta retorna un array de objetos con todos los productos que coincidan con el nombre recibido por query.
+-  Si no se encuentra ningun producto que coincida retorna un error 400 indicando que no se encontro el producto
+
+#### **📍 GET | /products**
+
+-  Esta ruta retorna un array de objetos con todos los productos almacenados en la base de datos.
+
+#### **📍 GET | /products/:idProduct**
+
+-  Esta ruta obtiene el detalle de un producto específico. 
+-  El producto es recibido por parámetro (ID).
+
+#### **📍 POST | /products**
+
+-  Esta ruta permite agregar un producto a la base de datos. 
+-  Por body se debera mandar id, name, color, price, image, category, parentCategory, description.
+-  Si el producto se crea correctamente devolvera un JSON con el producto.
+
 
 <br />
 
