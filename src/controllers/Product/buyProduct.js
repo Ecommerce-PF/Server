@@ -1,5 +1,4 @@
 const {Clothes} = require('../db.js');
-const {Product} = require('../db.js');
 
 const buyProduct = async (id, name, color, price, image, category, parentCategory, description, UserId) => {
     // if (!id || !name || !color || !price || !image || !category || !parentCategory || !description || !UserId) 

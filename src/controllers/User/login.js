@@ -1,4 +1,4 @@
-const { User } = require("../db");
+const { User } = require("../../db.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { JWT_SIGN } = process.env;
