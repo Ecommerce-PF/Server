@@ -110,6 +110,17 @@ El servidor cuenta con las siguientes rutas:
 -  Por body se debera mandar id, name, color, price, image, category, parentCategory, description.
 -  Si el producto se crea correctamente devolvera un JSON con el producto.
 
+#### **📍 PUT | /products/:id**
+
+-  Esta ruta permite agregar o modificarla informacion o los datos un producto y guardarlo en la base de datos por medio del id. 
+
+
+
+#### **📍 DELETE | /products/:id**
+
+-  Esta ruta permite borrar un producto de la bases de datos a traves del id. 
+
+
 
 <br />
 
