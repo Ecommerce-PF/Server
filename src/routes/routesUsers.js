@@ -1,13 +1,11 @@
 const { Router } = require("express");
 const router = Router();
-const getAllUsers = require("../controllers/getUsers");
-
-const signUp = require("../controllers/signUp");
-const login = require("../controllers/login");
-const protected = require("../controllers/protected");
-const verifyToken = require("../middelware/verifyToken");
-const getUserById = require("../controllers/getUserById");
-
+const getAllUsers = require("../controllers/User/getUsers");
+const signUp = require("../controllers/User/signUp");
+const login = require("../controllers/User/login");
+const protected = require("../controllers/User/protected");
+const verifyToken = require("../middleware/verifyToken");
+const getUserById = require("../controllers/User/getUserById");
 
 router.get("/", async (req, res) => {
   try {
