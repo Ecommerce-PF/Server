@@ -2,15 +2,12 @@ const { Router } = require("express");
 const router = Router();
 const routesProducts = require("./routesProducts");
 const routesUsers = require("./routesUsers");
-const PostProduct = require("../controllers/postProduct");
-
-
+const routeWhishListProduct = require("./routeWhishListProducts");
 
 router.use("/products", routesProducts);
 
 router.use("/users", routesUsers);
 
-router.use("/postProduct", PostProduct);
-
+router.use("/whishListProduct", routeWhishListProduct);
 
 module.exports = router;
