@@ -32,15 +32,6 @@ router.get("/", async (req, res) => {
     }
 });
 
-// router.get("/", async (req, res) => {
-//     try {
-//       const users = await getAllUsers();
-//       res.status(200).json(users);
-//     } catch (error) {
-//       res.status(400).send(error.message);
-//     }
-//   });
-
 
 
 
