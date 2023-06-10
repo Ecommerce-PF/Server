@@ -21,7 +21,6 @@ const sequelize = new Sequelize(
 
 UserModel(sequelize);
 ClothesModel(sequelize);
-ProductModel(sequelize);
 
 const { User, Clothes } = sequelize.models;
 
