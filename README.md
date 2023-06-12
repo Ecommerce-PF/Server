@@ -37,7 +37,7 @@ El servidor cuenta con las siguientes rutas:
 
 -  Obtiene un arreglo de objetos, donde cada objeto es un usuario con toda su información.
 
-#### **📍 GET | /users/:idUser**
+#### **📍 GET | /users/:id**
 
 -  Esta ruta obtiene el detalle de un usuario específico. 
 -  El usuario es recibido por parámetro (ID).
@@ -60,6 +60,36 @@ El servidor cuenta con las siguientes rutas:
 -  Validara la contrasena, si la contrasena no es valida retornara un error 400 indicando que el usuario
    o la contrasena son incorrectos.
 
+#### **📍 PUT | /users/:id**
+-  Esta ruta permite actualizar o modificar la informacion o propiedades al usuario.
+
+#### **📍 DELETE | /users/:id**
+-  Esta ruta permite eliminar de la base de datos a un usuario por id.
+
+</br> </br>
+
+<br />
+
+---
+
+<br />
+
+#### **📍 POST | /whisList**
+-  Esta ruta permite agregar un producto a la lista de deseos.
+
+#### **📍 GET | /whisList/:id"**
+-  Esta ruta permite consultar segun el id de un usuario, los productos que tiene en su lista de deseos .
+-  Permite tener una relacion en la lista de deseos sin afectar el carrito de compras .
+
+
+</br> </br>
+
+<br />
+
+---
+
+<br />
+
 #### **📍 GET | /products/name?="..."**
 
 -  Esta ruta retorna un array de objetos con todos los productos que coincidan con el nombre recibido por query.
@@ -79,6 +109,17 @@ El servidor cuenta con las siguientes rutas:
 -  Esta ruta permite agregar un producto a la base de datos. 
 -  Por body se debera mandar id, name, color, price, image, category, parentCategory, description.
 -  Si el producto se crea correctamente devolvera un JSON con el producto.
+
+#### **📍 PUT | /products/:id**
+
+-  Esta ruta permite agregar o modificarla informacion o los datos un producto y guardarlo en la base de datos por medio del id. 
+
+
+
+#### **📍 DELETE | /products/:id**
+
+-  Esta ruta permite borrar un producto de la bases de datos a traves del id. 
+
 
 
 <br />
