@@ -24,7 +24,6 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
-console.log("sali del ultimo middleware");
 
 server.use(routes); //por aqui pasan todas las endpoint
 
