@@ -10,3 +10,4 @@ conn.sync({ force: false, alter: true }).then(() => {
     console.log(`Server online on ${BACK_URL}`);
   });
 });
+
