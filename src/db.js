@@ -25,8 +25,8 @@ OrdersModel(sequelize);
 
 const { User, Clothes, Orders } = sequelize.models;
 
-User.belongsToMany(Clothes, { through: "whislist" });
-Clothes.belongsToMany(User, { through: "whislist" });
+Clothes.belongsToMany(User, { through: "cart" });
+User.belongsToMany(Clothes, { through: "cart" });
 
 User.hasMany(Orders);
 Orders.belongsTo(User);
