@@ -21,12 +21,6 @@ const createOrder = async (products, userId) => {
     })
   );
 
-  const user = await User.findByPk(userId);
-  await user.createOrder({
-    userId,
-    products: items,
-  });
-
   var preference = {
     items,
     back_urls: {
@@ -34,11 +28,17 @@ const createOrder = async (products, userId) => {
       failure: `${FRONT_URL}/failure`,
       pending: `${FRONT_URL}/pending`,
     },
-    notification_url: `${BACK_URL}/webhook`,
+    notification_url: `${BACK_URL}/payment/webhook`,
   };
 
   const order = await mercadopago.preferences.create(preference);
-  console.log(order);
+  const user = await User.findByPk(userId);
+
+  await user.createOrder({
+    userId,
+    products: items,
+  });
+
   return order;
 };
 

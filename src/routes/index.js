@@ -13,6 +13,4 @@ router.use("/whishListProduct", routeWhishListProduct);
 
 router.use("/payment", routesPayment);
 
-router.use("/webhook", routesPayment);
-
 module.exports = router;
