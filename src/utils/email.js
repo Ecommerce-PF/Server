@@ -64,8 +64,8 @@ const sendPurchaseEmail = async (userId) => {
 };
 
 module.exports = {
-    sendRegistrationEmail,
-    sendPurchaseEmail,
+  sendRegistrationEmail,
+  sendPurchaseEmail,
 };
 
 /*
