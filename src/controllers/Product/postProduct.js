@@ -1,15 +1,15 @@
 const { Clothes } = require("../../db");
 
-const postProduct = async (
- { id,
+const postProduct = async ({
+  id,
   name,
   color,
   price,
   image,
   category,
   parentCategory,
-  description}
-) => {
+  description,
+}) => {
   const product = await Clothes.create({
     id,
     name,
