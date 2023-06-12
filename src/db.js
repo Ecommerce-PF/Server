@@ -31,6 +31,9 @@ User.belongsToMany(Clothes, { through: "cart" });
 User.hasMany(Orders);
 Orders.belongsTo(User);
 
+User.hasMany(Orders);
+Orders.belongsTo(User);
+
 const options = {
   method: "GET",
   url: "https://apidojo-forever21-v1.p.rapidapi.com/products/v2/list",

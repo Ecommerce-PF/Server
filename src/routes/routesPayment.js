@@ -15,10 +15,11 @@ router.post("/create-order", async (req, res) => {
   }
 });
 
-router.post("/webhook", (req, res) => {
+router.post("/", async (req, res) => {
     const payment = req.query;
     try {
-        const data = receiveWebHook(payment);
+        const data = await receiveWebHook(payment);
+
         res.status(200).json({order:data});
     } catch (error) {
         res.status(400).json({error:error.message});

@@ -5,7 +5,10 @@ const receiveWebHook = async (payment) => {
     const data = await mercadopago.payment.findById(payment["data.is"]);
     console.log(data);
   }
-  return data;
+
+  console.log(data);
+  return true;
+
 };
 
 module.exports = receiveWebHook;
