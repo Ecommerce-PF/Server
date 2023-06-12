@@ -3,7 +3,7 @@ const router = Router();
 const routesProducts = require("./routesProducts");
 const routesUsers = require("./routesUsers");
 const routeWhishListProduct = require("./routeWhishListProducts");
-const routesPayment = require('./routesPayment');
+const routesPayment = require("./routesPayment");
 
 router.use("/products", routesProducts);
 
