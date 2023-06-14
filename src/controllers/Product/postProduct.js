@@ -9,6 +9,8 @@ const postProduct = async ({
   category,
   parentCategory,
   description,
+  isAvaible,
+  stock,
 }) => {
   const product = await Clothes.create({
     id,
@@ -19,6 +21,8 @@ const postProduct = async ({
     category,
     parentCategory,
     description,
+    isAvaible,
+    stock,
   });
   return product;
 };
