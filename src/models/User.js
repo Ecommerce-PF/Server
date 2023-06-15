@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       profileImage: {
         type: DataTypes.STRING,
         defaultValue:
-          "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png",
+          "https://res.cloudinary.com/finalproject123/image/upload/v1686766053/1366_2000_qzgoym.jpg",
       },
       active: {
         type: DataTypes.BOOLEAN,
