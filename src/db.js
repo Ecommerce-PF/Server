@@ -2,6 +2,7 @@ require("dotenv").config();
 const UserModel = require("./models/User");
 const ClothesModel = require("./models/Clothes");
 const OrdersModel = require("./models/Orders");
+const ReviewsModel = require("./models/Reviews");
 const { Sequelize } = require("sequelize");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, API_KEY, DB_DEPLOY } =
   process.env;
@@ -23,14 +24,18 @@ const sequelize = new Sequelize(
 UserModel(sequelize);
 ClothesModel(sequelize);
 OrdersModel(sequelize);
+ReviewsModel(sequelize);
 
-const { User, Clothes, Orders } = sequelize.models;
+const { User, Clothes, Orders, Reviews } = sequelize.models;
 
 Clothes.belongsToMany(User, { through: "cart" });
 User.belongsToMany(Clothes, { through: "cart" });
 
 User.hasMany(Orders);
 Orders.belongsTo(User);
+
+User.hasMany(Reviews);
+Reviews.belongsTo(User);
 
 const options = {
   method: "GET",
