@@ -24,6 +24,8 @@ module.exports = (sequelize) => {
       image: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue:
+          "https://res.cloudinary.com/finalproject123/image/upload/v1686800930/Dummy-Default_paxnhf.jpg",
       },
       category: {
         type: DataTypes.STRING,
