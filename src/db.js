@@ -34,8 +34,11 @@ User.belongsToMany(Clothes, { through: "cart" });
 User.hasMany(Orders);
 Orders.belongsTo(User);
 
-User.hasMany(Reviews);
-Reviews.belongsTo(User);
+User.hasMany(Reviews);       // Un usuario puede tener muchas reseñas
+Reviews.belongsTo(User);     // Una reseña pertenece a un usuario
+
+Clothes.hasMany(Reviews);    // Una prenda puede tener muchas reseñas
+Reviews.belongsTo(Clothes);  // Una reseña pertenece a una prenda
 
 const options = {
   method: "GET",

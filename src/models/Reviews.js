@@ -10,12 +10,12 @@ module.exports = (sequelize) => {
         //     autoIncrement: true,
         //     primaryKey: true,
         // },
-        userId: {
-            type: DataTypes.INTEGER,
-        },
-        productId: {
-            type: DataTypes.INTEGER,
-        },
+        // userId: {
+        //     type: DataTypes.INTEGER,
+        // },
+        // productId: {
+        //     type: DataTypes.INTEGER,
+        // },
         review: {
             type: DataTypes.TEXT,
         },
