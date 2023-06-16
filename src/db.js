@@ -2,18 +2,11 @@ require("dotenv").config();
 const UserModel = require("./models/User");
 const ClothesModel = require("./models/Clothes");
 const OrdersModel = require("./models/Orders");
+const ReviewsModel = require("./models/Reviews");
 const { Sequelize } = require("sequelize");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, API_KEY, DB_DEPLOY } =
   process.env;
 const axios = require("axios");
-
-//  const sequelize = new Sequelize(
-//    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-//    {
-//      logging: false, // set to console.log to see the raw SQL queries
-//      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//    }
-//  );
 
 const sequelize = new Sequelize(DB_DEPLOY, {
   logging: false, // set to console.log to see the raw SQL queries
@@ -23,14 +16,21 @@ const sequelize = new Sequelize(DB_DEPLOY, {
 UserModel(sequelize);
 ClothesModel(sequelize);
 OrdersModel(sequelize);
+ReviewsModel(sequelize);
 
-const { User, Clothes, Orders } = sequelize.models;
+const { User, Clothes, Orders, Reviews } = sequelize.models;
 
 Clothes.belongsToMany(User, { through: "cart" });
 User.belongsToMany(Clothes, { through: "cart" });
 
 User.hasMany(Orders);
 Orders.belongsTo(User);
+
+User.hasMany(Reviews);       // Un usuario puede tener muchas reseñas
+Reviews.belongsTo(User);     // Una reseña pertenece a un usuario
+
+Clothes.hasMany(Reviews);    // Una prenda puede tener muchas reseñas
+Reviews.belongsTo(Clothes);  // Una reseña pertenece a una prenda
 
 const options = {
   method: "GET",
