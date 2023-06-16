@@ -1,4 +1,4 @@
-const { User, Clothes, Orders } = require("../../db.js");
+const { User, Clothes, Orders, Reviews } = require("../../db.js");
 
 const getUserById = async (id) => {
   
@@ -13,6 +13,9 @@ const getUserById = async (id) => {
       },
       {
         model: Clothes,
+      },
+      {
+        model: Reviews,
       },
     ],
   });
