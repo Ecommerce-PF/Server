@@ -34,17 +34,17 @@ User.belongsToMany(Clothes, { through: "cart" });
 User.hasMany(Orders);
 Orders.belongsTo(User);
 
-User.hasMany(Reviews);       // Un usuario puede tener muchas reseñas
-Reviews.belongsTo(User);     // Una reseña pertenece a un usuario
+User.hasMany(Reviews); // Un usuario puede tener muchas reseñas
+Reviews.belongsTo(User); // Una reseña pertenece a un usuario
 
-Clothes.hasMany(Reviews);    // Una prenda puede tener muchas reseñas
-Reviews.belongsTo(Clothes);  // Una reseña pertenece a una prenda
+Clothes.hasMany(Reviews); // Una prenda puede tener muchas reseñas
+Reviews.belongsTo(Clothes); // Una reseña pertenece a una prenda
 
 const options = {
   method: "GET",
   url: "https://apidojo-forever21-v1.p.rapidapi.com/products/v2/list",
   headers: {
-    "X-RapidAPI-Key": "decccd00aemsh3e01eda5ff2ad4bp142449jsn30eebb1f4658",
+    "X-RapidAPI-Key": "3dcc4882f8msh7d851a98f47a2f5p100b98jsn7dafc6e11bf4",
     "X-RapidAPI-Host": "apidojo-forever21-v1.p.rapidapi.com",
   },
 };
