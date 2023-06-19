@@ -6,8 +6,9 @@ const getAllOrders = require("../controllers/Orders/getAllOrders");
 const getOrdersById = require("../controllers/Orders/getOrdersById");
 
 router.get("/", async (req, res) => {
+    const { id } = req.body;
    try{
-    const orders = await getAllOrders();
+    const orders = await getAllOrders(id);
     res.status(200).json(orders);
     }catch(error){
         res.status(400).json({error: error.message});     
