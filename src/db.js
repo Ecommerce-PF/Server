@@ -36,7 +36,7 @@ const options = {
   method: "GET",
   url: "https://apidojo-forever21-v1.p.rapidapi.com/products/v2/list",
   headers: {
-    "X-RapidAPI-Key": "decccd00aemsh3e01eda5ff2ad4bp142449jsn30eebb1f4658",
+    "X-RapidAPI-Key": "4b193210cbmsh44487b758f8fceep113191jsnfb3c7a9ef6b8",
     "X-RapidAPI-Host": "apidojo-forever21-v1.p.rapidapi.com",
   },
 };
