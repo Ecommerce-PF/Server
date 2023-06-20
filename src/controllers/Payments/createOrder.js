@@ -8,8 +8,8 @@ const createOrder = async (products, userId) => {
     access_token:
       "TEST-7324911978665795-061117-ec741046ae14ae1bdfbb3cc5234e758e-1396914442",
   });
-
-  items = await Promise.all(
+  const user = await User.findByPk(userId);
+  const items = await Promise.all(
     products.map(async (product) => {
       const item = await Clothes.findByPk(product.id);
       return {
@@ -20,7 +20,10 @@ const createOrder = async (products, userId) => {
       };
     })
   );
-
+  const newOrder = await user.createOrder({
+    userId,
+    products: items,
+  });
   var preference = {
     items,
     back_urls: {
@@ -29,16 +32,10 @@ const createOrder = async (products, userId) => {
       pending: `${FRONT_URL}/pending`,
     },
     notification_url: `${BACK_URL}/payment/webhook`,
+    external_reference: `${newOrder.id}`,
   };
 
   const order = await mercadopago.preferences.create(preference);
-  const user = await User.findByPk(userId);
-
-  await user.createOrder({
-    userId,
-    products: items,
-  });
-
   return order;
 };
 

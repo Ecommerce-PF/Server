@@ -11,12 +11,13 @@ const receiveWebHook = async (req, res) => {
   try {
     if (payment.type === "payment") {
       const data = await mercadopago.payment.findById(payment["data.id"]);
+      const orderId = data.response.external_reference;
       const order = await Orders.findOne({
-        where: { status: null },
+        where: { id: orderId },
       });
       order.status = data.response.status;
       order.total = data.response.transaction_amount;
-      order.paymentMetod = data.response.operation_type;
+      order.paymentMetod = data.response.payment_type_id;
       order.paymentId = data.response.id;
       order.save();
       sendPaymentEmail(order.userId, order.id);
