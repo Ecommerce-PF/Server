@@ -22,6 +22,7 @@ module.exports = (sequelize) => {
       },
       paymentMetod: {
         type: DataTypes.STRING,
+        defaultValue: "Mercado Pago",
       },
       total: {
         type: DataTypes.FLOAT,
