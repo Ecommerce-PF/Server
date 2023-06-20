@@ -1,5 +1,5 @@
 const mercadopago = require("mercadopago");
-const { Orders } = require("../../db");
+const { Orders, Clothes } = require("../../db");
 const { sendPaymentEmail } = require("../../utils/email");
 
 const receiveWebHook = async (req, res) => {
@@ -20,7 +20,6 @@ const receiveWebHook = async (req, res) => {
       order.paymentMetod = data.response.payment_type_id;
       order.paymentId = data.response.id;
       order.save();
-      console.log('status ',order.status);
       if (order.status === "approved") {
         await Promise.all(
           order.products.map(async (product) => {
