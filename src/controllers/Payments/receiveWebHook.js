@@ -21,6 +21,18 @@ const receiveWebHook = async (req, res) => {
       order.paymentId = data.response.id;
       order.save();
       sendPaymentEmail(order.userId, order.id);
+
+      if (order.status === "approved") {
+        await Promise.all(
+          order.products.map(async (product) => {
+            const item = await Clothes.findByPk(product.id);
+            const newStock = item.stock - product.quantity;
+            if (newStock < 0) throw new Error("Stock can not be negative");
+            item.stock = newStock;
+            item.save();
+          })
+        );
+      }
     }
     res.sendStatus(200);
   } catch (error) {
