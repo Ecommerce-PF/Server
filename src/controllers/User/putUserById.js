@@ -2,6 +2,7 @@ const { User } = require("../../db");
 const bcrypt = require("bcryptjs");
 
 const putUserById = async (id, changeData) => {
+  console.log(changeData);
   try {
     const user = await User.findByPk(id);
     if (!user) {

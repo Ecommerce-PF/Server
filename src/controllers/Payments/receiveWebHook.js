@@ -1,5 +1,5 @@
 const mercadopago = require("mercadopago");
-const { Orders } = require("../../db");
+const { Orders, Clothes } = require("../../db");
 const { sendPaymentEmail } = require("../../utils/email");
 
 const receiveWebHook = async (req, res) => {
@@ -11,15 +11,27 @@ const receiveWebHook = async (req, res) => {
   try {
     if (payment.type === "payment") {
       const data = await mercadopago.payment.findById(payment["data.id"]);
+      const orderId = data.response.external_reference;
       const order = await Orders.findOne({
-        where: { status: null },
+        where: { id: orderId },
       });
       order.status = data.response.status;
       order.total = data.response.transaction_amount;
-      order.paymentMetod = data.response.operation_type;
+      order.paymentMetod = data.response.payment_type_id;
       order.paymentId = data.response.id;
       order.save();
-      sendPaymentEmail(order.userId, order.id);
+      if (order.status === "approved") {
+        await Promise.all(
+          order.products.map(async (product) => {
+            const item = await Clothes.findByPk(product.id);
+            const newStock = item.stock - product.quantity;
+            if (newStock < 0) throw new Error("Stock can not be negative");
+            item.stock = newStock;
+            item.save();
+          })
+        );
+      }
+      //sendPaymentEmail(order.userId, order.id);
     }
     res.sendStatus(200);
   } catch (error) {
