@@ -13,6 +13,7 @@ const createOrder = async (products, userId) => {
     products.map(async (product) => {
       const item = await Clothes.findByPk(product.id);
       return {
+        id: product.id,
         title: item.name,
         quantity: product.quantity,
         currency_id: "USD",
