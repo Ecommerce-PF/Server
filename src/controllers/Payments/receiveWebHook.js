@@ -1,5 +1,6 @@
 const mercadopago = require("mercadopago");
 const { Orders } = require("../../db");
+const { sendPaymentEmail } = require("../../utils/email");
 
 const receiveWebHook = async (req, res) => {
   const payment = req.query;
@@ -18,6 +19,7 @@ const receiveWebHook = async (req, res) => {
       order.paymentMetod = data.response.operation_type;
       order.paymentId = data.response.id;
       order.save();
+      sendPaymentEmail(order.userId, order.id);
     }
     res.sendStatus(200);
   } catch (error) {
