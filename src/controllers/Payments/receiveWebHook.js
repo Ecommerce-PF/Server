@@ -20,7 +20,6 @@ const receiveWebHook = async (req, res) => {
       order.paymentMetod = data.response.payment_type_id;
       order.paymentId = data.response.id;
       order.save();
-      sendPaymentEmail(order.userId, order.id);
       console.log('status ',order.status);
       if (order.status === "approved") {
         await Promise.all(
@@ -35,6 +34,7 @@ const receiveWebHook = async (req, res) => {
           })
         );
       }
+      //sendPaymentEmail(order.userId, order.id);
     }
     res.sendStatus(200);
   } catch (error) {
