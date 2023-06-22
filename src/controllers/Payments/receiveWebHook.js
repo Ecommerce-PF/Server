@@ -38,7 +38,6 @@ const receiveWebHook = async (req, res) => {
     res.sendStatus(200);
   } catch (error) {
     res.status(400).json({ error: error.message });
-    console.log(error);
   }
 };
 
