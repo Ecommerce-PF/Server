@@ -25,9 +25,11 @@ const receiveWebHook = async (req, res) => {
           order.products.map(async (product) => {
             const item = await Clothes.findByPk(product.id);
             const newStock = item.stock - product.quantity;
+            console.log('newStock: ', newStock);
             if (newStock < 0) throw new Error("Stock can not be negative");
             item.stock = newStock;
             item.save();
+            console.log('item: ', item);
           })
         );
       }

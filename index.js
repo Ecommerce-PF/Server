@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3001;
 
 // conn.sync({ force: false, alter: true }).then(() => {
   conn.sync({ force:  true }).then(() => {
+
   server.listen(PORT, () => {
     console.log(`Server online on ${BACK_URL}`);
   });
